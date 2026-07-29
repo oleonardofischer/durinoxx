@@ -41,27 +41,27 @@ export default function Hero({ onOpenQuote }: HeroProps) {
               Sistemas de Tanques em Aço Inox com <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-orange-400 to-amber-500">Engenharia Alemã</span>
             </h1>
 
-            <p className="text-slate-300 text-lg sm:text-xl leading-relaxed max-w-2xl">
-              A <strong>Durinoxx</strong> projeta e instala tanques industriais de aço inox de alta tecnologia, unindo a excelência alemã <strong>Stallkamp</strong> à agilidade da engenharia nacional.
+            <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
+              A <strong>Durinoxx</strong> projeta e instala produtos unindo a excelência alemã à agilidade da engenharia nacional. Em parceria com a <strong>Stallkamp</strong>, a empresa possui mais de 40 anos de experiência na fabricação de tanques e equipamentos em aço inoxidável. Essa escolha de material garante aos produtos uma vida útil quase inigualável, extrema resistência à corrosão, neutralidade química e biológica, além de reduzir os custos secundários de manutenção e reparos a um mínimo. Além disso, o aço inox é totalmente reciclável ao final de sua vida útil.
             </p>
 
             <div className="space-y-3.5 pt-2">
               <div className="flex items-start space-x-2.5">
                 <CheckCircle2 className="h-5 w-5 text-orange-500 shrink-0 mt-0.5" />
-                <span className="text-slate-200 text-sm">
+                <span className="text-slate-200 text-sm leading-snug">
                   <strong>Resistência à Corrosão:</strong> Proteção total contra oxidação com vida útil superior a 40 anos.
                 </span>
               </div>
               <div className="flex items-start space-x-2.5">
                 <CheckCircle2 className="h-5 w-5 text-orange-500 shrink-0 mt-0.5" />
-                <span className="text-slate-200 text-sm">
-                  <strong>Sistemas Integrados:</strong> Bombas, agitadores e separadores de fase originais de alta eficiência.
+                <span className="text-slate-200 text-sm leading-snug">
+                  <strong>Inovação e Modularidade:</strong> Os equipamentos são fruto de vasta experiência e constante evolução tecnológica. Um grande diferencial é a construção modular, como a dos tanques segmentados, que permite expansões futuras.
                 </span>
               </div>
               <div className="flex items-start space-x-2.5">
                 <CheckCircle2 className="h-5 w-5 text-orange-500 shrink-0 mt-0.5" />
-                <span className="text-slate-200 text-sm">
-                  <strong>Adequação Normativa:</strong> Projetos em conformidade técnica com as normas NR-12 e NR-13.
+                <span className="text-slate-200 text-sm leading-snug">
+                  <strong>Soluções Completas e Integradas:</strong> A Durinoxx não fornece apenas um produto, mas um sistema completo que abrange as quatro etapas fundamentais do manejo de dejetos e resíduos orgânicos: bombear, armazenar, agitar e separar.
                 </span>
               </div>
             </div>
