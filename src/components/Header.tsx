@@ -139,7 +139,7 @@ export default function Header({ onOpenQuote }: HeaderProps) {
               className="flex items-center justify-center space-x-2 text-slate-300 bg-slate-900 border border-slate-800 py-3 rounded-lg"
             >
               <PhoneCall className="h-4 w-4 text-orange-500" />
-              <span>Fale Direto: (11) 9999-9999</span>
+              <span>Fale Direto: +55 (49) 99198.8570</span>
             </a>
             <button
               onClick={() => {
