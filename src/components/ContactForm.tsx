@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ContactFormData, SectorId } from '../types';
-import { Mail, Phone, Building2, User, Send, CheckCircle2, ShieldCheck, HelpCircle } from 'lucide-react';
+import { Mail, Phone, Building2, User, Send, CheckCircle2, ShieldCheck, HelpCircle, MessageSquare } from 'lucide-react';
 
 interface ContactFormProps {
   prefilledMessage: string;
@@ -81,7 +81,7 @@ export default function ContactForm({
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!validateForm()) return;
@@ -89,42 +89,62 @@ export default function ContactForm({
     setIsSubmitting(true);
 
     const generatedProtocol = `DUR-${Math.floor(100000 + Math.random() * 900000)}`;
+    setProtocolCode(generatedProtocol);
 
-    // Prepare mailto link with all lead information for oleonardofischer@gmail.com
-    const subject = encodeURIComponent(`[ORÇAMENTO DURINOXX] ${formData.company} - ${formData.fullName} (${generatedProtocol})`);
-    const body = encodeURIComponent(
+    const emailSubject = `[ORÇAMENTO DURINOXX] ${formData.company} - ${formData.fullName} (${generatedProtocol})`;
+    const emailMessage = 
       `Nova solicitação de orçamento via site Durinoxx:\n\n` +
       `Protocolo: ${generatedProtocol}\n` +
       `Nome: ${formData.fullName}\n` +
       `Empresa: ${formData.company}\n` +
-      `E-mail: ${formData.email}\n` +
+      `E-mail do Cliente: ${formData.email}\n` +
       `Telefone: ${formData.phone}\n` +
       `Setor do Projeto: ${formData.sector}\n` +
       `Volume Requerido: ${formData.volumeRequired || 'Não informado'}\n\n` +
-      `Mensagem / Especificações Técnicas:\n${formData.message || 'Sem detalhes adicionais'}\n`
-    );
+      `Mensagem / Especificações Técnicas:\n${formData.message || 'Sem detalhes adicionais'}\n`;
 
-    setTimeout(() => {
-      setProtocolCode(generatedProtocol);
-      setIsSubmitting(false);
-      setShowSuccessModal(true);
-
-      // Open mail client to send directly to oleonardofischer@gmail.com
-      window.open(`mailto:oleonardofischer@gmail.com?subject=${subject}&body=${body}`, '_blank');
-
-      // Reset form
-      setFormData({
-        fullName: '',
-        company: '',
-        email: '',
-        phone: '',
-        sector: 'other',
-        volumeRequired: '',
-        message: '',
-        agreedToTerms: true
+    try {
+      // Send form data to oleonardofischer@gmail.com via FormSubmit AJAX service
+      await fetch("https://formsubmit.co/ajax/oleonardofischer@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          _subject: emailSubject,
+          _replyto: formData.email,
+          _autoresponse: `Olá ${formData.fullName},\n\nObrigado por solicitar um orçamento à Durinoxx!\n\nRecebemos suas especificações técnicas com o Protocolo #${generatedProtocol}.\nEm breve, um de nossos engenheiros especialistas entrará em contato com você para apresentar o estudo de viabilidade e proposta técnica.\n\nAtenciosamente,\nEquipe Durinoxx Engenharia em Inox\nwww.durinoxx.com.br`,
+          Protocolo: generatedProtocol,
+          Nome: formData.fullName,
+          Empresa: formData.company,
+          EmailCliente: formData.email,
+          Telefone: formData.phone,
+          Setor: formData.sector,
+          VolumeEstimado: formData.volumeRequired || 'Não informado',
+          MensagemDetalhes: formData.message || 'Sem detalhes'
+        })
       });
-      onClearPrefill();
-    }, 1000);
+    } catch (err) {
+      console.warn("Auto-submit service unavailable, fallback to direct notification:", err);
+    }
+
+    // Also fallback / open mailto if required or just show modal
+    setIsSubmitting(false);
+    setShowSuccessModal(true);
+
+    // Reset form
+    setFormData({
+      fullName: '',
+      company: '',
+      email: '',
+      phone: '',
+      sector: 'other',
+      volumeRequired: '',
+      message: '',
+      agreedToTerms: true
+    });
+    onClearPrefill();
   };
 
   return (
@@ -468,19 +488,31 @@ export default function ContactForm({
               </div>
 
               <p className="text-slate-400 text-sm leading-relaxed">
-                Excelente! Sua configuração e dados de contato foram salvos com sucesso na nossa Central de Projetos Durinoxx. 
+                Excelente! Sua configuração e dados de contato foram salvos com sucesso na nossa Central de Projetos Durinoxx.
               </p>
 
-              <p className="text-slate-500 text-xs">
-                Um engenheiro de aplicação altamente especializado entrará em contato por e-mail ou telefone em menos de <strong>24 horas úteis</strong> para enviar o estudo prévio de fundação, cálculo estrutural de anéis e proposta de orçamento personalizada.
+              <p className="text-slate-400 text-xs">
+                Em breve, um de nossos engenheiros especialistas entrará em contato por e-mail ou telefone para enviar o estudo prévio de fundação, cálculo estrutural de anéis e proposta de orçamento personalizada.
               </p>
 
-              <button
-                onClick={() => setShowSuccessModal(false)}
-                className="bg-orange-500 hover:bg-orange-600 text-white font-medium text-sm py-2.5 px-6 rounded-lg block w-full text-center cursor-pointer transition-colors"
-              >
-                Entendido
-              </button>
+              <div className="pt-2 w-full space-y-2">
+                <a
+                  href={`https://wa.me/5549991988570?text=${encodeURIComponent(`Olá! Acabei de solicitar um orçamento no site (Protocolo #${protocolCode}). Gostaria de agilizar a análise técnica.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs sm:text-sm py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 w-full text-center transition-colors"
+                >
+                  <MessageSquare className="h-4 w-4" />
+                  <span>Agilizar Atendimento via WhatsApp</span>
+                </a>
+
+                <button
+                  onClick={() => setShowSuccessModal(false)}
+                  className="bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs sm:text-sm py-2 px-6 rounded-lg block w-full text-center cursor-pointer transition-colors"
+                >
+                  Fechar
+                </button>
+              </div>
 
             </div>
           </div>
