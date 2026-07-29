@@ -135,7 +135,7 @@ export default function Header({ onOpenQuote }: HeaderProps) {
 
           <div className="pt-6 flex flex-col space-y-4">
             <a
-              href="tel:+551199999999"
+              href="tel:+5549991988570"
               className="flex items-center justify-center space-x-2 text-slate-300 bg-slate-900 border border-slate-800 py-3 rounded-lg"
             >
               <PhoneCall className="h-4 w-4 text-orange-500" />
