@@ -33,31 +33,31 @@ const PUB_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTSVqgUkMyT
 export const DEFAULT_SHEET_DATA: Record<string, SheetRow> = {
   "01": {
     id: "01",
-    title: "Logotipo",
-    category: "logo",
-    description: "Logotipo Oficial Durinoxx",
-    detalhes: "",
-    imageUrl: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=300",
+    title: "Durinoxx",
+    category: "logotipo",
+    description: "Logotipo da Durinoxx para Website",
+    detalhes: "Logotipo Durinoxx",
+    imageUrl: "https://lh3.googleusercontent.com/d/1g16jOz9GM4xwEGEXRR4Y-pijy_mlJsXJ",
     year: "2026",
     gallery: ""
   },
   "02": {
     id: "02",
-    title: "Hero Background",
-    category: "hero",
-    description: "Tanque Industrial de Inox",
-    detalhes: "",
-    imageUrl: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
+    title: "Vários tanques biogás",
+    category: "foto",
+    description: "Vários tanques biogás",
+    detalhes: "Tanque biogás",
+    imageUrl: "https://lh3.googleusercontent.com/d/1gj6KAfTA5MVMBxBiz0A5blRh_87KuK-P",
     year: "2026",
     gallery: ""
   },
   "03": {
     id: "03",
-    title: "Portfolio Systems",
-    category: "portfolio",
-    description: "Sistemas Stallkamp",
+    title: "Sistema em operação",
+    category: "foto",
+    description: "Sistema em operação",
     detalhes: "",
-    imageUrl: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=800",
+    imageUrl: "https://lh3.googleusercontent.com/d/1sBRQUWNprNX0lEAKMQ1fUT-IzwA6Vqdt",
     year: "2026",
     gallery: ""
   }
