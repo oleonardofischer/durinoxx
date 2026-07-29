@@ -15,6 +15,7 @@ import QuoteCalculator from './components/QuoteCalculator';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import { SheetsProvider } from './context/SheetsContext';
+import { MessageCircle } from 'lucide-react';
 
 export default function App() {
   const [prefilledMessage, setPrefilledMessage] = useState<string>('');
@@ -83,6 +84,20 @@ export default function App() {
 
         {/* 9. Comprehensive Professional Footer */}
         <Footer />
+
+        {/* Floating WhatsApp Quick Action Button */}
+        <a
+          href="https://wa.me/5549991988570?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20seus%20servi%C3%A7os!"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white p-3.5 sm:px-4 sm:py-3 rounded-full shadow-2xl flex items-center gap-2.5 transition-all duration-300 hover:scale-105 group border border-emerald-400/40"
+          title="Falar no WhatsApp"
+        >
+          <MessageCircle className="h-6 w-6 text-white fill-white/20" />
+          <span className="hidden sm:inline text-xs font-semibold tracking-wide">
+            Falar no WhatsApp
+          </span>
+        </a>
 
       </div>
     </SheetsProvider>

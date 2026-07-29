@@ -88,14 +88,31 @@ export default function ContactForm({
 
     setIsSubmitting(true);
 
-    // Simulate database / server-side submission
+    const generatedProtocol = `DUR-${Math.floor(100000 + Math.random() * 900000)}`;
+
+    // Prepare mailto link with all lead information for oleonardofischer@gmail.com
+    const subject = encodeURIComponent(`[ORÇAMENTO DURINOXX] ${formData.company} - ${formData.fullName} (${generatedProtocol})`);
+    const body = encodeURIComponent(
+      `Nova solicitação de orçamento via site Durinoxx:\n\n` +
+      `Protocolo: ${generatedProtocol}\n` +
+      `Nome: ${formData.fullName}\n` +
+      `Empresa: ${formData.company}\n` +
+      `E-mail: ${formData.email}\n` +
+      `Telefone: ${formData.phone}\n` +
+      `Setor do Projeto: ${formData.sector}\n` +
+      `Volume Requerido: ${formData.volumeRequired || 'Não informado'}\n\n` +
+      `Mensagem / Especificações Técnicas:\n${formData.message || 'Sem detalhes adicionais'}\n`
+    );
+
     setTimeout(() => {
-      const generatedProtocol = `DUR-${Math.floor(100000 + Math.random() * 900000)}`;
       setProtocolCode(generatedProtocol);
       setIsSubmitting(false);
       setShowSuccessModal(true);
 
-      // Reset form (except message prefills)
+      // Open mail client to send directly to oleonardofischer@gmail.com
+      window.open(`mailto:oleonardofischer@gmail.com?subject=${subject}&body=${body}`, '_blank');
+
+      // Reset form
       setFormData({
         fullName: '',
         company: '',
@@ -107,7 +124,7 @@ export default function ContactForm({
         agreedToTerms: true
       });
       onClearPrefill();
-    }, 1500);
+    }, 1000);
   };
 
   return (
@@ -177,8 +194,8 @@ export default function ContactForm({
                 <Mail className="h-4 w-4 text-orange-500" />
                 <div>
                   <span className="text-slate-500 block font-mono">E-MAIL DIRETO:</span>
-                  <a href="mailto:info@durinoxx.com.br" className="text-white hover:underline font-semibold">
-                    info@durinoxx.com.br
+                  <a href="mailto:oleonardofischer@gmail.com" className="text-white hover:underline font-semibold">
+                    oleonardofischer@gmail.com
                   </a>
                 </div>
               </div>
@@ -186,7 +203,12 @@ export default function ContactForm({
                 <Phone className="h-4 w-4 text-orange-500" />
                 <div>
                   <span className="text-slate-500 block font-mono">CENTRAL WHATSAPP:</span>
-                  <a href="tel:+5549991988570" className="text-white hover:underline font-semibold">
+                  <a 
+                    href="https://wa.me/5549991988570?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20seus%20servi%C3%A7os!" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-white hover:underline font-semibold"
+                  >
                     +55 49 99198.8570
                   </a>
                 </div>

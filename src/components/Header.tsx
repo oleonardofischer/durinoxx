@@ -63,11 +63,13 @@ export default function Header({ onOpenQuote }: HeaderProps) {
           {/* Header Action Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <a
-              href="tel:+5549991988570"
+              href="https://wa.me/5549991988570?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20seus%20servi%C3%A7os!"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center space-x-1.5 text-xs font-medium text-slate-300 hover:text-orange-500 transition-colors"
             >
               <PhoneCall className="h-3.5 w-3.5 text-orange-500" />
-              <span>Fale Conosco</span>
+              <span>WhatsApp: (49) 99198-8570</span>
             </a>
             <button
               onClick={onOpenQuote}
@@ -135,11 +137,13 @@ export default function Header({ onOpenQuote }: HeaderProps) {
 
           <div className="pt-6 flex flex-col space-y-4">
             <a
-              href="tel:+5549991988570"
+              href="https://wa.me/5549991988570?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20seus%20servi%C3%A7os!"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center justify-center space-x-2 text-slate-300 bg-slate-900 border border-slate-800 py-3 rounded-lg"
             >
               <PhoneCall className="h-4 w-4 text-orange-500" />
-              <span>Fale Direto: +55 (49) 99198.8570</span>
+              <span>WhatsApp: +55 (49) 99198.8570</span>
             </a>
             <button
               onClick={() => {

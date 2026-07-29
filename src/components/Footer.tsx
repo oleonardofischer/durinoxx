@@ -89,11 +89,23 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="h-4 w-4 text-orange-500 shrink-0" />
-                <span>+55 49 99198.8570</span>
+                <a
+                  href="https://wa.me/5549991988570?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20seus%20servi%C3%A7os!"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-orange-500 transition-colors"
+                >
+                  +55 49 99198.8570
+                </a>
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="h-4 w-4 text-orange-500 shrink-0" />
-                <span>info@durinoxx.com</span>
+                <a
+                  href="mailto:oleonardofischer@gmail.com"
+                  className="hover:text-orange-500 transition-colors"
+                >
+                  oleonardofischer@gmail.com
+                </a>
               </li>
             </ul>
           </div>
