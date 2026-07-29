@@ -63,7 +63,7 @@ export default function Header({ onOpenQuote }: HeaderProps) {
           {/* Header Action Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <a
-              href="tel:+551199999999"
+              href="tel:+5549991988570"
               className="flex items-center space-x-1.5 text-xs font-medium text-slate-300 hover:text-orange-500 transition-colors"
             >
               <PhoneCall className="h-3.5 w-3.5 text-orange-500" />
