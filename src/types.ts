@@ -17,7 +17,7 @@ export interface SectorDetail {
   };
 }
 
-export type ProductId = 'tanques' | 'bombas' | 'agitadores' | 'separadores';
+export type ProductId = 'tanques' | 'agitadores' | 'separadores';
 
 export interface ProductDetail {
   id: ProductId;

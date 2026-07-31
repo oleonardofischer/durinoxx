@@ -83,8 +83,7 @@ export default function Footer() {
               <li className="flex items-start gap-2.5">
                 <MapPin className="h-4 w-4 text-orange-500 shrink-0 mt-0.5" />
                 <span className="leading-normal">
-                  Rua Pedro Exterkotter, 110<br />
-                  Lages, SC - CEP 88524-731
+                  Lages, SC - Brasil
                 </span>
               </li>
               <li className="flex items-center gap-2.5">
@@ -101,10 +100,10 @@ export default function Footer() {
               <li className="flex items-center gap-2.5">
                 <Mail className="h-4 w-4 text-orange-500 shrink-0" />
                 <a
-                  href="mailto:oleonardofischer@gmail.com"
+                  href="mailto:info@durinoxx.com"
                   className="hover:text-orange-500 transition-colors"
                 >
-                  oleonardofischer@gmail.com
+                  info@durinoxx.com
                 </a>
               </li>
             </ul>

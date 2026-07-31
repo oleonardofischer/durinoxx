@@ -104,8 +104,8 @@ export default function ContactForm({
       `Mensagem / Especificações Técnicas:\n${formData.message || 'Sem detalhes adicionais'}\n`;
 
     try {
-      // Send form data to oleonardofischer@gmail.com via FormSubmit AJAX service
-      await fetch("https://formsubmit.co/ajax/oleonardofischer@gmail.com", {
+      // Send form data to info@durinoxx.com via FormSubmit AJAX service
+      await fetch("https://formsubmit.co/ajax/info@durinoxx.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -214,8 +214,8 @@ export default function ContactForm({
                 <Mail className="h-4 w-4 text-orange-500" />
                 <div>
                   <span className="text-slate-500 block font-mono">E-MAIL DIRETO:</span>
-                  <a href="mailto:oleonardofischer@gmail.com" className="text-white hover:underline font-semibold">
-                    oleonardofischer@gmail.com
+                  <a href="mailto:info@durinoxx.com" className="text-white hover:underline font-semibold">
+                    info@durinoxx.com
                   </a>
                 </div>
               </div>

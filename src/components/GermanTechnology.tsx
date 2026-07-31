@@ -30,7 +30,7 @@ export default function GermanTechnology() {
             </h2>
 
             <p className="text-slate-600 text-base leading-relaxed">
-              A <strong>Durinoxx</strong> une a liderança global da alemã <strong>Stallkamp GmbH</strong> à engenharia nacional para entregar tanques segmentados e maquinários de alta performance.
+              A <strong>Durinoxx</strong> une a liderança global da alemã <strong>Stallkamp</strong> à engenharia nacional para entregar tanques segmentados e equipamentos de alta performance.
             </p>
 
             <p className="text-slate-500 text-sm leading-relaxed">
@@ -38,7 +38,7 @@ export default function GermanTechnology() {
             </p>
 
             {/* Highlights list */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
               
               <div className="flex gap-2.5 items-start">
                 <div className="bg-orange-500/10 p-2 rounded-lg text-orange-600 mt-0.5">
@@ -52,21 +52,11 @@ export default function GermanTechnology() {
 
               <div className="flex gap-2.5 items-start">
                 <div className="bg-orange-500/10 p-2 rounded-lg text-orange-600 mt-0.5">
-                  <FileCheck2 className="h-4.5 w-4.5" />
-                </div>
-                <div>
-                  <h4 className="text-sm font-semibold text-slate-900">Normas e Regulamentações</h4>
-                  <p className="text-slate-500 text-xs mt-0.5">Conformidade integral com a NR-13 e exigências ambientais vigentes.</p>
-                </div>
-              </div>
-
-              <div className="flex gap-2.5 items-start">
-                <div className="bg-orange-500/10 p-2 rounded-lg text-orange-600 mt-0.5">
                   <HardHat className="h-4.5 w-4.5" />
                 </div>
                 <div>
                   <h4 className="text-sm font-semibold text-slate-900">Segurança Operacional</h4>
-                  <p className="text-slate-500 text-xs mt-0.5">Montagem mecânica rápida e conformidade total com a NR-12.</p>
+                  <p className="text-slate-500 text-xs mt-0.5">Montagem mecânica rápida e alta confiabilidade técnica.</p>
                 </div>
               </div>
 
@@ -83,7 +73,7 @@ export default function GermanTechnology() {
             </div>
           </motion.div>
 
-          {/* Column 2: visual schematic card of German excellence */}
+          {/* Column 2: Durabilidade e Baixa Manutenção Card */}
           <motion.div 
             className="lg:col-span-6"
             initial={{ opacity: 0, x: 30 }}
@@ -91,86 +81,48 @@ export default function GermanTechnology() {
             viewport={{ once: true, margin: "-120px" }}
             transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
           >
-            <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 relative shadow-lg">
+            <div className="bg-white border border-slate-200 rounded-2xl p-8 sm:p-10 relative shadow-xl space-y-6">
               
               {/* Abstract flag subtle indicator */}
-              <div className="absolute top-4 right-4 flex items-center space-x-1.5 bg-slate-50 px-2.5 py-1 rounded-full border border-slate-200">
+              <div className="absolute top-5 right-6 flex items-center space-x-1.5 bg-slate-50 px-2.5 py-1 rounded-full border border-slate-200">
                 <div className="w-2.5 h-1.5 bg-black" />
                 <div className="w-2.5 h-1.5 bg-red-600" />
                 <div className="w-2.5 h-1.5 bg-yellow-500" />
-                <span className="text-[9px] font-mono font-medium text-slate-600">GERMAN QUALITY</span>
+                <span className="text-[9px] font-mono font-medium text-slate-600">STALLKAMP GERMANY</span>
               </div>
 
-              <h3 className="font-display font-bold text-lg text-slate-900 mb-6">Ficha Técnica e Conformidade Legal</h3>
-              
-              <div className="space-y-4">
-                
-                {/* Rule Item */}
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200/80 flex items-start gap-3.5">
-                  <div className="bg-emerald-500/10 text-emerald-600 p-1.5 rounded-lg mt-0.5">
-                    <ShieldCheck className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <div className="flex justify-between items-baseline">
-                      <h4 className="text-sm font-semibold text-slate-900">NR-13 (Vasos de Armazenamento)</h4>
-                      <span className="text-[10px] font-mono text-emerald-600 uppercase font-bold">Aprovado</span>
-                    </div>
-                    <p className="text-slate-500 text-xs mt-1 leading-relaxed">
-                      Cálculo de espessura de chapas, ensaios não destrutivos (ultrassom) e projeto assinado por Engenheiro com ART.
-                    </p>
-                  </div>
+              <div className="flex items-center gap-3">
+                <div className="bg-orange-500/10 p-3 rounded-xl text-orange-600">
+                  <ShieldCheck className="h-7 w-7" />
                 </div>
-
-                {/* Rule Item */}
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200/80 flex items-start gap-3.5">
-                  <div className="bg-emerald-500/10 text-emerald-600 p-1.5 rounded-lg mt-0.5">
-                    <ShieldCheck className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <div className="flex justify-between items-baseline">
-                      <h4 className="text-sm font-semibold text-slate-900">NR-12 (Segurança de Equipamentos)</h4>
-                      <span className="text-[10px] font-mono text-emerald-600 uppercase font-bold">Aprovado</span>
-                    </div>
-                    <p className="text-slate-500 text-xs mt-1 leading-relaxed">
-                      Bombas e agitadores Stallkamp integram comandos e proteções que resguardam totalmente os operadores da planta.
-                    </p>
-                  </div>
+                <div>
+                  <span className="text-xs font-mono font-bold text-orange-600 uppercase tracking-widest block">EXCELÊNCIA EM ENGENHARIA</span>
+                  <h3 className="font-display font-bold text-2xl text-slate-900">Durabilidade e Baixa Manutenção</h3>
                 </div>
-
-                {/* Rule Item */}
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200/80 flex items-start gap-3.5">
-                  <div className="bg-emerald-500/10 text-emerald-600 p-1.5 rounded-lg mt-0.5">
-                    <ShieldCheck className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <div className="flex justify-between items-baseline">
-                      <h4 className="text-sm font-semibold text-slate-900">Norma Sanitária & de Efluentes</h4>
-                      <span className="text-[10px] font-mono text-emerald-600 uppercase font-bold">Aprovado</span>
-                    </div>
-                    <p className="text-slate-500 text-xs mt-1 leading-relaxed">
-                      Sistemas 100% estanques adequados para tratamento de efluentes sanitários, industriais e produção de biogás.
-                    </p>
-                  </div>
-                </div>
-
               </div>
 
-              {/* Explanatory footer inside the card */}
-              <div className="mt-6 pt-5 border-t border-slate-150 text-center">
-                <span className="text-[11px] text-slate-400 font-mono block">
-                  CÓDIGO DE SELETIVIDADE DE AÇO:
+              <div className="bg-slate-50 p-6 rounded-xl border border-slate-200/90 text-slate-700 text-sm sm:text-base leading-relaxed space-y-3">
+                <p>
+                  Todo o portfólio da empresa é desenvolvido sob os pilares de serem <strong>indestrutíveis, eficientes, confiáveis e de fácil manutenção</strong>.
+                </p>
+                <p className="text-slate-600 text-sm">
+                  Suas bombas e agitadores, por exemplo, são projetados para operar de forma segura sob as condições mais difíceis.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center justify-between gap-3 pt-2 text-xs text-slate-500 font-mono">
+                <span className="inline-flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  Alta Estabilidade Química
                 </span>
-                <div className="flex justify-center gap-2 mt-2">
-                  <span className="bg-slate-50 px-2 py-1 rounded text-[10px] font-bold text-slate-800 border border-slate-200 font-mono">
-                    AISI 304 (Padrão)
-                  </span>
-                  <span className="bg-slate-50 px-2 py-1 rounded text-[10px] font-bold text-orange-600 border border-slate-200 font-mono">
-                    AISI 316 (Química Fina)
-                  </span>
-                  <span className="bg-slate-50 px-2 py-1 rounded text-[10px] font-bold text-amber-700 border border-slate-200 font-mono">
-                    AISI 316Ti (Biogás Extremo)
-                  </span>
-                </div>
+                <span className="inline-flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  Operação Contínua
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  Mínima Intervenção
+                </span>
               </div>
 
             </div>

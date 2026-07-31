@@ -1,37 +1,14 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { Flame, ShieldCheck, ShieldAlert, Activity, Clock, Check, X, RefreshCw, Layers } from 'lucide-react';
+import { ShieldCheck, Activity, Clock, Check, RefreshCw, Layers, Award, Sparkles } from 'lucide-react';
 
 export default function TechComparison() {
-  const [activeTab, setActiveTab] = useState<'comparison' | 'integrity'>('comparison');
+  const [activeTab, setActiveTab] = useState<'advantages' | 'integrity'>('advantages');
   const [years, setYears] = useState<number>(15);
 
   // Inox remains practically brand new due to premium alloys (AISI 304/316/316Ti)
   const inoxIntegrity = Math.max(97, Math.round(100 - years * 0.1));
   const inoxDowntime = 0; // zero maintenance shutdown required for recoating
-
-  // Traditional Carbon Steel/Iron degrades over time unless major maintenance is done
-  const getIronIntegrity = (y: number) => {
-    let integrity = 100;
-    for (let i = 1; i <= y; i++) {
-      integrity -= 6; // base decay rate per year from oxidation
-      // Every 5 years a major, disruptive sandblasting and epoxy coating is performed to patch leaks
-      if (i % 5 === 0) {
-        integrity = Math.min(85, integrity + 18); // partially restored, but suffers permanent fatigue
-      }
-    }
-    return Math.max(20, integrity);
-  };
-
-  const getIronDowntime = (y: number) => {
-    // 4 days of yearly inspection/patching + 20 days of complete halt every 5 years for full repaint
-    const routineInspect = y * 4;
-    const majorSandblasting = Math.floor(y / 5) * 20;
-    return routineInspect + majorSandblasting;
-  };
-
-  const ironIntegrity = getIronIntegrity(years);
-  const ironDowntime = getIronDowntime(years);
 
   return (
     <section id="diferenciais" className="py-20 bg-slate-900 border-b border-slate-800">
@@ -46,13 +23,13 @@ export default function TechComparison() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
           <span className="text-xs font-bold text-orange-500 uppercase tracking-widest block mb-2 font-mono">
-            DURABILIDADE EXTREMA VS. OBSOLESCÊNCIA
+            ALTA TECNOLOGIA E LONGEVIDADE
           </span>
           <h2 className="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight">
-            Aço Inox vs. Tanques de Ferro: Por que o Inox é a Escolha Inteligente
+            Diferenciais Técnicos e Vantagens do Aço Inox
           </h2>
           <p className="text-slate-400 mt-4 text-base">
-            Onde as aplicações convencionais utilizam tanques de ferro ou aço carbono vulneráveis à oxidação, nossos sistemas de aço inoxidável premium Stallkamp garantem resistência absoluta à corrosão.
+            Conheça os principais pilares de excelência que tornam os sistemas em aço inoxidável Stallkamp e Durinoxx a solução definitiva para o armazenamento e manejo de efluentes e resíduos orgânicos.
           </p>
         </motion.div>
 
@@ -66,14 +43,14 @@ export default function TechComparison() {
         >
           <div className="bg-slate-950 p-1 rounded-xl border border-slate-800 inline-flex">
             <button
-              onClick={() => setActiveTab('comparison')}
+              onClick={() => setActiveTab('advantages')}
               className={`px-5 py-2.5 text-xs sm:text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer ${
-                activeTab === 'comparison'
+                activeTab === 'advantages'
                   ? 'bg-orange-500 text-white shadow-md'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
-              Comparativo Técnico
+              Vantagens do Aço Inox
             </button>
             <button
               onClick={() => setActiveTab('integrity')}
@@ -85,153 +62,120 @@ export default function TechComparison() {
             >
               <span>Simulador de Ciclo de Vida</span>
               <span className="bg-orange-500/20 text-orange-400 text-[10px] px-1.5 py-0.5 rounded font-mono">
-                Integridade
+                Desempenho
               </span>
             </button>
           </div>
         </motion.div>
 
-        {/* Tab 1: Comparison Matrix */}
-        {activeTab === 'comparison' && (
+        {/* Tab 1: Advantages Matrix */}
+        {activeTab === 'advantages' && (
           <motion.div 
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+            className="space-y-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
           >
-            
-            {/* Stainless Steel Card */}
+            {/* Top Banner Card */}
             <div className="bg-slate-950 border-2 border-orange-500/40 rounded-2xl p-6 sm:p-8 relative shadow-xl">
-              <div className="absolute -top-3.5 left-6 bg-gradient-to-r from-orange-600 to-orange-500 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider font-mono flex items-center gap-1.5 shadow-md">
-                <ShieldCheck className="h-3.5 w-3.5" />
-                DURINOXX AÇO INOX (STALLKAMP)
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-slate-800 pb-6 mb-8">
+                <div>
+                  <div className="inline-flex items-center gap-1.5 bg-orange-500/10 text-orange-400 px-3 py-1 rounded-full text-xs font-bold font-mono border border-orange-500/20 mb-3">
+                    <ShieldCheck className="h-4 w-4" />
+                    DURINOXX & STALLKAMP
+                  </div>
+                  <h3 className="text-2xl font-display font-bold text-white">Sistemas Integrados em Aço Inoxidável Premium</h3>
+                  <p className="text-slate-400 text-sm mt-1">Engenharia projetada para altíssima durabilidade e máxima eficiência operacional.</p>
+                </div>
+                
+                <div className="bg-slate-900 border border-slate-800 p-4 rounded-xl flex items-center gap-4 shrink-0">
+                  <div className="bg-orange-500/10 p-3 rounded-lg text-orange-500">
+                    <Clock className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <span className="text-[11px] text-slate-400 font-mono block uppercase">VIDA ÚTIL ESTIMADA</span>
+                    <span className="text-xl font-bold text-white font-display">Superior a 40 Anos</span>
+                  </div>
+                </div>
               </div>
 
-              <div className="mt-4 space-y-6">
-                <div>
-                  <h3 className="text-xl font-display font-bold text-white">Sistemas em Aço Inox Premium</h3>
-                  <p className="text-slate-400 text-sm mt-1">Concebido para durar gerações sem degradação química ou física.</p>
+              {/* Grid of Advantages */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div className="bg-slate-900/60 border border-slate-800/80 p-5 rounded-xl space-y-2">
+                  <div className="flex items-center gap-2.5">
+                    <div className="bg-emerald-500/10 p-1.5 rounded-lg text-emerald-400">
+                      <Check className="h-4 w-4" />
+                    </div>
+                    <h4 className="text-base font-semibold text-white">Resistência Superior à Corrosão</h4>
+                  </div>
+                  <p className="text-slate-400 text-xs leading-relaxed pl-8">
+                    Impermeabilidade total a fluidos agressivos, chorume, dejetos e intempéries climáticas sem depender de tintas protetivas.
+                  </p>
                 </div>
 
-                <div className="space-y-4">
-                  {/* Item */}
-                  <div className="flex items-start gap-3">
-                    <div className="bg-emerald-500/10 p-1 rounded mt-0.5">
-                      <Check className="h-4 w-4 text-emerald-400" />
+                <div className="bg-slate-900/60 border border-slate-800/80 p-5 rounded-xl space-y-2">
+                  <div className="flex items-center gap-2.5">
+                    <div className="bg-emerald-500/10 p-1.5 rounded-lg text-emerald-400">
+                      <Check className="h-4 w-4" />
                     </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-white">Resistência à Corrosão</h4>
-                      <p className="text-slate-400 text-xs mt-0.5">Impermeabilidade total a fluidos agressivos, chorume, dejetos e intempéries.</p>
-                    </div>
+                    <h4 className="text-base font-semibold text-white">Manutenção Praticamente Nula</h4>
                   </div>
-                  {/* Item */}
-                  <div className="flex items-start gap-3">
-                    <div className="bg-emerald-500/10 p-1 rounded mt-0.5">
-                      <Check className="h-4 w-4 text-emerald-400" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-white">Custo de Manutenção</h4>
-                      <p className="text-slate-400 text-xs mt-0.5">Manutenção praticamente nula, sem necessidade de repinturas periódicas.</p>
-                    </div>
-                  </div>
-                  {/* Item */}
-                  <div className="flex items-start gap-3">
-                    <div className="bg-emerald-500/10 p-1 rounded mt-0.5">
-                      <Check className="h-4 w-4 text-emerald-400" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-white">Segurança Contra Vazamentos</h4>
-                      <p className="text-slate-400 text-xs mt-0.5">Furação computadorizada de precisão alemã e vedação hermética permanente.</p>
-                    </div>
-                  </div>
-                  {/* Item */}
-                  <div className="flex items-start gap-3">
-                    <div className="bg-emerald-500/10 p-1 rounded mt-0.5">
-                      <Check className="h-4 w-4 text-emerald-400" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-white">Valor do Ativo Reversível</h4>
-                      <p className="text-slate-400 text-xs mt-0.5">Retém alto valor de mercado e permite desmontagem e realocação facilitadas.</p>
-                    </div>
-                  </div>
+                  <p className="text-slate-400 text-xs leading-relaxed pl-8">
+                    Reduz drasticamente os custos secundários ao eliminar a necessidade de repinturas periódicas e tratamentos anticorrosivos.
+                  </p>
                 </div>
 
-                <div className="pt-6 border-t border-slate-900 flex justify-between items-center bg-slate-900/40 -mx-6 -mb-6 p-6 rounded-b-2xl">
-                  <div className="flex items-center gap-2">
-                    <Clock className="h-5 w-5 text-orange-400" />
-                    <span className="text-xs text-slate-400 font-mono">VIDA ÚTIL ESTIMADA:</span>
+                <div className="bg-slate-900/60 border border-slate-800/80 p-5 rounded-xl space-y-2">
+                  <div className="flex items-center gap-2.5">
+                    <div className="bg-emerald-500/10 p-1.5 rounded-lg text-emerald-400">
+                      <Check className="h-4 w-4" />
+                    </div>
+                    <h4 className="text-base font-semibold text-white">Segurança e Vedação Hermética</h4>
                   </div>
-                  <span className="text-lg font-bold text-white font-display">40 a 60 Anos</span>
+                  <p className="text-slate-400 text-xs leading-relaxed pl-8">
+                    Furação computadorizada de precisão alemã e vedações de engenharia testadas para total estanqueidade sem vazamentos.
+                  </p>
                 </div>
+
+                <div className="bg-slate-900/60 border border-slate-800/80 p-5 rounded-xl space-y-2">
+                  <div className="flex items-center gap-2.5">
+                    <div className="bg-emerald-500/10 p-1.5 rounded-lg text-emerald-400">
+                      <Check className="h-4 w-4" />
+                    </div>
+                    <h4 className="text-base font-semibold text-white">Construção Modular e Reversível</h4>
+                  </div>
+                  <p className="text-slate-400 text-xs leading-relaxed pl-8">
+                    A montagem em anéis segmentados permite fácil expansão futura de volume, desmontagem simplificada e realocação do ativo.
+                  </p>
+                </div>
+
+                <div className="bg-slate-900/60 border border-slate-800/80 p-5 rounded-xl space-y-2">
+                  <div className="flex items-center gap-2.5">
+                    <div className="bg-emerald-500/10 p-1.5 rounded-lg text-emerald-400">
+                      <Check className="h-4 w-4" />
+                    </div>
+                    <h4 className="text-base font-semibold text-white">Neutralidade Química e Biológica</h4>
+                  </div>
+                  <p className="text-slate-400 text-xs leading-relaxed pl-8">
+                    Não contamina nem interfere no processo biológico de biodigestores e tanques de armazenamento de resíduos orgânicos.
+                  </p>
+                </div>
+
+                <div className="bg-slate-900/60 border border-slate-800/80 p-5 rounded-xl space-y-2">
+                  <div className="flex items-center gap-2.5">
+                    <div className="bg-emerald-500/10 p-1.5 rounded-lg text-emerald-400">
+                      <Check className="h-4 w-4" />
+                    </div>
+                    <h4 className="text-base font-semibold text-white">Sustentabilidade e Reciclagem</h4>
+                  </div>
+                  <p className="text-slate-400 text-xs leading-relaxed pl-8">
+                    O aço inoxidável é um material 100% reciclável ao final de sua longa vida útil, alinhado com a economia circular.
+                  </p>
+                </div>
+
               </div>
             </div>
-
-            {/* Iron / Carbon Steel Card */}
-            <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6 sm:p-8 relative opacity-85 shadow-lg">
-              <div className="absolute -top-3.5 left-6 bg-slate-800 text-slate-300 px-4 py-1 rounded-full text-xs font-bold tracking-wider font-mono flex items-center gap-1.5 border border-slate-700">
-                <ShieldAlert className="h-3.5 w-3.5 text-orange-500" />
-                TANQUES TRADICIONAIS DE FERRO
-              </div>
-
-              <div className="mt-4 space-y-6">
-                <div>
-                  <h3 className="text-xl font-display font-bold text-slate-300">Ferro / Aço Carbono Pintado</h3>
-                  <p className="text-slate-500 text-sm mt-1">Sistemas de baixo custo de aquisição imediato, mas alto custo cumulativo de manutenção.</p>
-                </div>
-
-                <div className="space-y-4">
-                  {/* Item */}
-                  <div className="flex items-start gap-3">
-                    <div className="bg-rose-500/10 p-1 rounded mt-0.5">
-                      <X className="h-4 w-4 text-rose-400" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-slate-300">Fragilidade à Oxidação</h4>
-                      <p className="text-slate-500 text-xs mt-0.5">Suscetível à ferrugem precoce, corrosão severa e vazamentos em curto prazo.</p>
-                    </div>
-                  </div>
-                  {/* Item */}
-                  <div className="flex items-start gap-3">
-                    <div className="bg-rose-500/10 p-1 rounded mt-0.5">
-                      <X className="h-4 w-4 text-rose-400" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-slate-300">Custo Manutenção Elevado</h4>
-                      <p className="text-slate-500 text-xs mt-0.5">Exige paradas periódicas para repintura interna/externa e trocas de parafusos.</p>
-                    </div>
-                  </div>
-                  {/* Item */}
-                  <div className="flex items-start gap-3">
-                    <div className="bg-rose-500/10 p-1 rounded mt-0.5">
-                      <X className="h-4 w-4 text-rose-400" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-slate-300">Risco de Vazamento</h4>
-                      <p className="text-slate-500 text-xs mt-0.5">Fadiga física e oxidação geram vazamentos e riscos de multas ambientais graves.</p>
-                    </div>
-                  </div>
-                  {/* Item */}
-                  <div className="flex items-start gap-3">
-                    <div className="bg-rose-500/10 p-1 rounded mt-0.5">
-                      <X className="h-4 w-4 text-rose-400" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-slate-300">Depreciação Rápida</h4>
-                      <p className="text-slate-500 text-xs mt-0.5">Perda rápida de valor patrimonial devido ao desgaste, sendo inviável para realocações.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-6 border-t border-slate-900 flex justify-between items-center bg-slate-900/20 -mx-6 -mb-6 p-6 rounded-b-2xl">
-                  <div className="flex items-center gap-2">
-                    <Clock className="h-5 w-5 text-slate-500" />
-                    <span className="text-xs text-slate-500 font-mono">VIDA ÚTIL ESTIMADA:</span>
-                  </div>
-                  <span className="text-lg font-bold text-slate-400 font-display">8 a 15 Anos</span>
-                </div>
-              </div>
-            </div>
-
           </motion.div>
         )}
 
@@ -250,10 +194,10 @@ export default function TechComparison() {
                 <div>
                   <h3 className="text-xl font-display font-bold text-white flex items-center gap-2">
                     <Activity className="text-orange-500 h-5 w-5" />
-                    Ciclo de Vida & Fadiga Estrutural
+                    Simulador de Desempenho Contínuo
                   </h3>
                   <p className="text-slate-400 text-xs mt-2">
-                    Arraste o controle para simular o comportamento de integridade mecânica de um tanque de <strong>2.000m³</strong> ao longo de décadas e veja as paradas técnicas necessárias para cada sistema.
+                    Simule o comportamento de integridade estrutural e a disponibilidade operacional dos tanques em <strong>Aço Inox Durinoxx Stallkamp</strong> ao longo das décadas.
                   </p>
                 </div>
 
@@ -280,9 +224,11 @@ export default function TechComparison() {
                 </div>
 
                 {/* Technical Context Callout */}
-                <div className="bg-orange-500/5 p-4 rounded-xl border border-orange-500/20 text-xs text-orange-200">
-                  <strong className="text-white block mb-1">Como calculamos:</strong>
-                  Nosso modelo simula a taxa média de oxidação metálica sob gases de efluentes corrosivos, o desgaste físico das guarnições e o tempo acumulado de paralisação técnica para manutenção preventiva severa.
+                <div className="bg-orange-500/5 p-4 rounded-xl border border-orange-500/20 text-xs text-orange-200 space-y-1">
+                  <strong className="text-white block">Excelência em Ligas Metálicas:</strong>
+                  <span>
+                    Utilizamos ligas nobres como AISI 304, AISI 316 e AISI 316Ti, garantindo estabilidade física e química contínua sob severas condições de efluentes.
+                  </span>
                 </div>
               </div>
 
@@ -295,7 +241,7 @@ export default function TechComparison() {
                   {/* Metric 1: Structural Integrity */}
                   <div className="space-y-3">
                     <h4 className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">
-                      1. Integridade Física Estrutural (%):
+                      1. Integridade Física Estrutural do Aço Inox (%):
                     </h4>
                     
                     {/* Stainless Steel Bar */}
@@ -318,60 +264,22 @@ export default function TechComparison() {
                         </div>
                       </div>
                     </div>
-
-                    {/* Iron Bar */}
-                    <div className="space-y-1.5">
-                      <div className="flex justify-between text-xs">
-                        <span className="text-slate-300 font-medium flex items-center gap-1.5">
-                          <span className="w-2.5 h-2.5 rounded-full bg-slate-500"></span>
-                          Tanque de Ferro / Carbono Tradicional
-                        </span>
-                        <span className={`font-mono font-semibold ${ironIntegrity > 70 ? 'text-yellow-400' : 'text-red-400'}`}>
-                          {ironIntegrity}% {ironIntegrity > 75 ? '(Instável)' : ironIntegrity > 50 ? '(Degradado)' : '(Risco Crítico)'}
-                        </span>
-                      </div>
-                      <div className="w-full bg-slate-900 h-5 rounded-full overflow-hidden border border-slate-800">
-                        <div
-                          className={`h-full rounded-full transition-all duration-300 flex items-center justify-end px-3 ${
-                            ironIntegrity > 75 
-                              ? 'bg-yellow-500' 
-                              : ironIntegrity > 50 
-                                ? 'bg-orange-600' 
-                                : 'bg-red-600'
-                          }`}
-                          style={{ width: `${ironIntegrity}%` }}
-                        >
-                          <span className="text-[9px] text-slate-950 font-bold font-mono">Fadiga</span>
-                        </div>
-                      </div>
-                    </div>
                   </div>
 
                   {/* Metric 2: Operational Downtime */}
                   <div className="space-y-3">
                     <h4 className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">
-                      2. Paralisações Técnicas Acumuladas (Dias):
+                      2. Paralisações Técnicas Obrigatórias Para Repintura:
                     </h4>
                     
                     {/* Stainless Steel Downtime */}
-                    <div className="flex justify-between items-center text-xs bg-slate-900/60 p-2.5 rounded-lg border border-slate-800/50">
+                    <div className="flex justify-between items-center text-xs bg-slate-900/60 p-3 rounded-lg border border-slate-800/50">
                       <span className="text-slate-300 flex items-center gap-1.5">
                         <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                        Aço Inox (Durinoxx):
+                        Aço Inox (Durinoxx Stallkamp):
                       </span>
                       <span className="font-mono text-emerald-400 font-bold">
-                        {inoxDowntime} Dias de Parada
-                      </span>
-                    </div>
-
-                    {/* Iron Downtime */}
-                    <div className="flex justify-between items-center text-xs bg-slate-900/60 p-2.5 rounded-lg border border-slate-800/50">
-                      <span className="text-slate-300 flex items-center gap-1.5">
-                        <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
-                        Tanques de Ferro:
-                      </span>
-                      <span className="font-mono text-rose-400 font-bold">
-                        {ironDowntime} Dias de Parada (Manutenção)
+                        {inoxDowntime} Dias de Parada (100% Disponível)
                       </span>
                     </div>
                   </div>
@@ -381,42 +289,31 @@ export default function TechComparison() {
                 {/* Technical Report Summary */}
                 <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div>
-                    <span className="text-xs text-slate-400 font-mono block uppercase">Status Estrutural Estimado:</span>
+                    <span className="text-xs text-slate-400 font-mono block uppercase">Status Estrutural em {years} Anos:</span>
                     <span className="text-lg sm:text-xl font-display font-bold text-white">
-                      {years <= 5 
-                        ? 'Estabilidade Inicial' 
-                        : years <= 10 
-                          ? 'Período de Manutenção Severa' 
-                          : 'Inox Consolidado vs Ferro Obsoleto'
-                      }
+                      Desempenho e Integridade Total
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 px-3 py-2 rounded-lg text-orange-400 text-xs">
-                    <RefreshCw className="h-4 w-4 animate-spin-slow" />
-                    <span>
-                      {years < 10 
-                        ? 'Inox opera sem paradas físicas.' 
-                        : 'O ferro exige troca completa ou jateamento agressivo imediato.'
-                      }
-                    </span>
+                  <div className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-3 py-2 rounded-lg text-emerald-400 text-xs">
+                    <ShieldCheck className="h-4 w-4" />
+                    <span>Inox opera com índice de manutenção próximo a zero.</span>
                   </div>
                 </div>
 
                 {/* Timeline info dots */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div className="bg-slate-900/40 p-3 rounded-lg border border-slate-800/60 text-xs">
-                    <span className="text-slate-400 block font-mono">Anos 1-4:</span>
-                    <span className="text-white">Operação inicial estável, mas o ferro já exige vistorias periódicas de oxidação.</span>
+                    <span className="text-slate-400 block font-mono">Anos 1-10:</span>
+                    <span className="text-white">Operação contínua com estanqueidade perfeita e sem desgaste de parede.</span>
                   </div>
                   <div className="bg-slate-900/40 p-3 rounded-lg border border-slate-800/60 text-xs">
-                    <span className="text-slate-400 block font-mono">Ano 5 (Parada Crítica):</span>
-                    <span className="text-rose-400 font-semibold block">20 dias de parada no ferro</span>
-                    <span className="text-slate-300">Parada obrigatória do ferro para jateamento de areia e repintura epóxi geral.</span>
+                    <span className="text-slate-400 block font-mono">Anos 10-20:</span>
+                    <span className="text-white">Estrutura inalterada frente a reagentes e efluentes orgânicos ou industriais.</span>
                   </div>
                   <div className="bg-slate-900/40 p-3 rounded-lg border border-slate-800/60 text-xs">
-                    <span className="text-slate-400 block font-mono">Anos 15-30:</span>
-                    <span className="text-white">Inox Stallkamp mantém integridade acima de 95%. O ferro enfrenta risco crítico de vazamentos.</span>
+                    <span className="text-slate-400 block font-mono">Anos 20-30+:</span>
+                    <span className="text-white">Manutenção de alto valor do ativo e facilidade para expansão modular.</span>
                   </div>
                 </div>
 
@@ -430,3 +327,4 @@ export default function TechComparison() {
     </section>
   );
 }
+

@@ -6,55 +6,63 @@ export default function ApplicationSectors() {
   const sectors: SectorDetail[] = [
     {
       id: 'agua',
-      title: 'Armazenamento de Água e Saneamento',
-      subtitle: 'Água Potável, Água de Processo e Saneamento Básico',
-      description: 'Armazenamento higiênico para grandes volumes de água potável ou de reuso. Os tanques de inox impedem a proliferação de microrganismos, mantendo a água livre de contaminações.',
+      title: 'Tratamento de Efluentes (ETE) & Saneamento',
+      subtitle: 'Decantação, Armazenamento de Lodo e Reatores Biológicos',
+      description: 'Estações de Tratamento de Efluentes com estanqueidade total. Tanques para decantação, armazenamento de lodo, tanques de mistura, coleta de efluentes e reatores biológicos de alta durabilidade.',
       benefits: [
-        'Higiene total: não altera cor ou gosto da água',
-        'Estanqueidade perfeita que evita infiltrações',
-        'Montagem modular rápida e segura',
-        'Bloqueio térmico e contra raios UV'
+        'Resistência absoluta a efluentes urbanos e industriais',
+        'Estanqueidade 100% que previne contaminação do solo',
+        'Inércia biológica que impede incrustações e biofilme',
+        'Estrutura modular sem necessidade de caixarias na obra'
       ],
       specs: {
-        recommendedInox: 'Aço Inox AISI 304 (Conformidade Alimentar)',
-        avgTemp: 'Temperatura ambiente',
-        standards: ['AWWA D103', 'Portaria de Potabilidade GM/MS nº 888', 'NR-13']
+        recommendedInox: 'Aço Inox AISI 304 / AISI 316L',
+        avgTemp: 'Temperatura ambiente até 45°C',
+        standards: ['CONAMA 430', 'ABNT NBR 12209', 'NR-13', 'AWWA D103']
       }
     },
     {
       id: 'biogas',
-      title: 'Biodigestores e Produção de Biogás',
-      subtitle: 'Dejetos Animais, Efluentes Orgânicos e Geração de Energia',
-      description: 'Tratamento seguro de efluentes agressivos na agroindústria e saneamento. Projetados com ligas de alta durabilidade para suportar ambientes gasosos e ácidos corrosivos (H₂S).',
+      title: 'Usinas de Biogás e Digestão Anaeróbia',
+      subtitle: 'Fermentadores, Tanques Finais e Armazenamento de Gás',
+      description: 'Projetados especificamente para suportar o ambiente agressivo e corrosivo do biogás (H₂S e ácidos voláteis). Coberturas de dupla membrana de insuflação contínua com baixíssima permeabilidade ao metano.',
       benefits: [
-        'Resistência crítica a gases e ácidos severos',
-        'Opção de isolamento térmico de alta eficiência',
-        'Integração total com agitadores Stallkamp',
-        'Conformidade integral com condicionantes de descarte'
+        'Anel superior em AISI 316Ti especial para zona de gás',
+        'Isolamento térmico trapezoidal integrado',
+        'Compatibilidade total com agitadores submersíveis Stallkamp',
+        'Retenção segura de efluentes da digestão anaeróbia'
       ],
       specs: {
-        recommendedInox: 'Aço Inox AISI 316Ti com Molibdênio e Titânio',
+        recommendedInox: 'AISI 316Ti (Anel superior) / AISI 304 (Anéis inferiores)',
         avgTemp: '38°C (Mesofílico) a 55°C (Termofílico)',
-        standards: ['Normas de Segurança de Biogás', 'CONAMA 430', 'NR-12', 'ATEX']
+        standards: ['Normas Internacionais de Biogás', 'ATEX', 'NR-12', 'DIN 4102 B1']
       }
     },
     {
       id: 'quimico',
-      title: 'Processamento Químico e Industrial',
-      subtitle: 'Efluentes Ácidos, Misturas Químicas e Processos Industriais',
-      description: 'Segurança total para as indústrias química, alimentícia e de processamento. Reservatórios estanques que eliminam riscos ambientais e de vazamentos de materiais agressivos.',
+      title: 'Agricultura e Agroindústria',
+      subtitle: 'Dejetos Líquidos, Esterqueiras, Chorume e Fertilizantes',
+      description: 'Armazenamento seguro para dejetos animais, chorume e fertilizantes orgânicos. Evita infiltrações no lençol freático e permite a recuperação mecânica de nutrientes para adubação.',
       benefits: [
-        'Inércia química para evitar reações com fluidos',
-        'Resistência mecânica a pressões e vácuo',
-        'Facilidade para processos de limpeza CIP',
-        'Excelente estabilidade térmica operacional'
+        'Resistência a compostos nitrogenados e amônia',
+        'Integração com separadores de fases sólido-líquido',
+        'Agitação eficiente que impede a sedimentação do dejeto',
+        'Montagem ágil diretamente sobre laje de concreto'
       ],
       specs: {
-        recommendedInox: 'Aço Inox AISI 316 (Alta Resistência Química)',
-        avgTemp: 'Sob consulta técnica',
-        standards: ['NR-13 (Vasos de Pressão)', 'ABNT NBR ISO 9001', 'Normas ISO Técnicas']
+        recommendedInox: 'Aço Inox AISI 304 ou AISI 316L (Padrão Agro)',
+        avgTemp: 'Temperatura ambiente',
+        standards: ['Licenciamento Ambiental SEEMA/FATMA', 'NR-13']
       }
     }
+  ];
+
+  const additionalIndustries = [
+    { title: 'Indústria em Geral', desc: 'Efluentes industriais, coleta de águas residuais e água clarificada.' },
+    { title: 'Cervejarias', desc: 'Armazenamento de bagaço de malte (polpa cervejeira) e efluentes do processo.' },
+    { title: 'Alimentos e Bebidas', desc: 'Armazenamento de sucos de frutas, resíduos alimentares líquidos e lodos orgânicos.' },
+    { title: 'Reserva Técnica de Incêndio (RTI)', desc: 'Reservatórios dedicados contra incêndio de altíssima confiabilidade.' },
+    { title: 'Madeireira, Papel e Celulose', desc: 'Tratamento e armazenamento de efluentes celulósicos e licores industriais.' }
   ];
 
   return (
@@ -195,6 +203,32 @@ export default function ApplicationSectors() {
               </motion.div>
             );
           })}
+        </div>
+
+        {/* Other Industry Segments Card Grid */}
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8">
+          <div className="mb-6">
+            <span className="text-xs font-mono text-orange-400 uppercase font-bold tracking-widest block">
+              DEMAIS SEGMENTOS ATENDIDOS
+            </span>
+            <h3 className="font-display font-bold text-xl text-white mt-1">
+              Aplicações Especializadas de Processo
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {additionalIndustries.map((ind, idx) => (
+              <div key={idx} className="bg-slate-950 border border-slate-800/80 p-4 rounded-xl space-y-1.5">
+                <div className="flex items-center gap-2 text-orange-400 font-semibold text-sm">
+                  <span className="w-2 h-2 rounded-full bg-orange-500"></span>
+                  <h4>{ind.title}</h4>
+                </div>
+                <p className="text-slate-400 text-xs leading-relaxed pl-4">
+                  {ind.desc}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
       </div>
