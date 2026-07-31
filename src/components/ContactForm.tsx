@@ -104,27 +104,35 @@ export default function ContactForm({
       `Mensagem / Especificações Técnicas:\n${formData.message || 'Sem detalhes adicionais'}\n`;
 
     try {
-      // Send form data to info@durinoxx.com via FormSubmit AJAX service
-      await fetch("https://formsubmit.co/ajax/info@durinoxx.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify({
-          _subject: emailSubject,
-          _replyto: formData.email,
-          _autoresponse: `Olá ${formData.fullName},\n\nObrigado por solicitar um orçamento à Durinoxx!\n\nRecebemos suas especificações técnicas com o Protocolo #${generatedProtocol}.\nEm breve, um de nossos engenheiros especialistas entrará em contato com você para apresentar o estudo de viabilidade e proposta técnica.\n\nAtenciosamente,\nEquipe Durinoxx Engenharia em Inox\nwww.durinoxx.com.br`,
-          Protocolo: generatedProtocol,
-          Nome: formData.fullName,
-          Empresa: formData.company,
-          EmailCliente: formData.email,
-          Telefone: formData.phone,
-          Setor: formData.sector,
-          VolumeEstimado: formData.volumeRequired || 'Não informado',
-          MensagemDetalhes: formData.message || 'Sem detalhes'
+      // Send form data to info@durinoxx.com and oleonardofischer@gmail.com via FormSubmit AJAX service
+      const payload = {
+        _subject: emailSubject,
+        _replyto: formData.email,
+        _cc: "info@durinoxx.com,oleonardofischer@gmail.com",
+        _autoresponse: `Olá ${formData.fullName},\n\nObrigado por solicitar um orçamento à Durinoxx!\n\nRecebemos suas especificações técnicas com o Protocolo #${generatedProtocol}.\nEm breve, um de nossos engenheiros especialistas entrará em contato com você para apresentar o estudo de viabilidade e proposta técnica.\n\nAtenciosamente,\nEquipe Durinoxx Engenharia em Inox\nwww.durinoxx.com.br`,
+        Protocolo: generatedProtocol,
+        Nome: formData.fullName,
+        Empresa: formData.company,
+        EmailCliente: formData.email,
+        Telefone: formData.phone,
+        Setor: formData.sector,
+        VolumeEstimado: formData.volumeRequired || 'Não informado',
+        MensagemDetalhes: formData.message || 'Sem detalhes'
+      };
+
+      // We trigger requests to both targets to ensure immediate delivery and FormSubmit activation
+      await Promise.allSettled([
+        fetch("https://formsubmit.co/ajax/info@durinoxx.com", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify(payload)
+        }),
+        fetch("https://formsubmit.co/ajax/oleonardofischer@gmail.com", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify(payload)
         })
-      });
+      ]);
     } catch (err) {
       console.warn("Auto-submit service unavailable, fallback to direct notification:", err);
     }
